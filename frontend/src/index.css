@@ -6,7 +6,6 @@ html {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: #8dbfa8;
 }
 
 body {
@@ -126,7 +125,6 @@ body {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  height: 100vh;
   padding-top: 100px;
 }
 
@@ -134,7 +132,6 @@ body {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  height: 100vh;
 }
 
 .category-list {
