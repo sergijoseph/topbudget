@@ -198,7 +198,7 @@ export default function EditTransaction({ appModal, modalData }) {
                         </td>
                         <td>
                             <div><label htmlFor="amount">Amount</label></div>
-                            <input style={{ width: '125px', textAlign: 'right' }}
+                            <input style={{ width: '100px', textAlign: 'right' }}
                                 step="0.01" min="0.00" placeholder='0.00' required
                                 type="number" id='amount' name='amount'
                                 value={transValues.amount}
@@ -289,7 +289,7 @@ export default function EditTransaction({ appModal, modalData }) {
                             <select id='type' name='type' required
                                 value={transValues.type}
                                 onChange={e => setTransValues({ ...transValues, type: e.target.value })}
-                                style={{ width: '145px' }}>
+                                style={{ width: '120px' }}>
                                 <option value='' disabled hidden></option>
                                 <option value='EXPENSE'>Expense</option>
                                 <option value='INCOME'>Income</option>
@@ -313,7 +313,7 @@ export default function EditTransaction({ appModal, modalData }) {
                         </td>
                         <td>
                             <div><label htmlFor="date">Date</label></div>
-                            <input type="date" size="12" id='date' name='date' required
+                            <input style={{width: '100px'}} type="date" size="12" id='date' name='date' required
                                 readOnly={transValues.schedule_type === 'MONTHLY-EOM' ? true : false}
                                 value={transValues.date}
                                 onChange={e => setTransValues({ ...transValues, date: e.target.value })}

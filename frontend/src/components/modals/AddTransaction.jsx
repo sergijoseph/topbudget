@@ -98,7 +98,7 @@ export default function AddTransaction({ appModal, modalData }) {
                         </td>
                         <td>
                             <div><label htmlFor="amount">Amount</label></div>
-                            <input style={{ width: '125px', textAlign: 'right' }}
+                            <input style={{ width: '100px', textAlign: 'right' }}
                                 step="0.01" min="0.00" placeholder='0.00' required
                                 type="number" id='amount' name='amount'
                                 value={amountValue}
@@ -178,7 +178,7 @@ export default function AddTransaction({ appModal, modalData }) {
                         </td>
                         <td>
                             <div><label htmlFor="type">Type</label></div>
-                            <select id='type' name='type' required style={{ width: '145px' }}>
+                            <select id='type' name='type' required style={{ width: '120px' }}>
                                 <option value='expense'>Expense</option>
                                 <option value='income'>Income</option>
                             </select>
@@ -197,7 +197,7 @@ export default function AddTransaction({ appModal, modalData }) {
                         </td>
                         <td>
                             <div><label htmlFor="date">Date</label></div>
-                            <input type="date" size="12" id='date' name='date' required
+                            <input style={{width: '100px'}} type="date" size="12" id='date' name='date' required
                                 value={displayScheduleType === 'MONTHLY-EOM' ? lastDayOfMonth : dateValue}
                                 readOnly={displayScheduleType === 'MONTHLY-EOM' ? true : false}
                                 onChange={e => setDateValue(e.target.value)}
