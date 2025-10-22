@@ -837,3 +837,61 @@ button {
   border-radius: 5px;
   cursor: pointer;
 }
+
+/* Styles for screens smaller than or equal to 600px (e.g., mobile) */
+@media (max-width: 600px) {
+
+  html {
+    font-size: 10px;
+    background-color: #8dbfa8;
+    background-image: none;
+  }
+
+  .dashboard-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .categories-box {
+    width: 98vw;
+    margin: 20px 0;
+    padding: 0 1vw;
+    min-width: 100px;
+  }
+
+  .transactions-box {
+    margin: 10px 0;
+    padding: 0 2vw 5vw 0vw;
+    min-width: 98vw;
+    width: 98vw;
+  }
+
+  .transactions-box .tableScroll {
+    overflow-y: auto;
+    overflow-x: hidden;
+    min-width: 100px;
+    max-height: 500px;
+  }
+
+  .transactions-box table {
+    border-collapse: collapse;
+    min-width: 100px;
+  }
+
+  .upcoming-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .upcoming-list {
+    height: 100%;
+    padding-bottom: 15px;
+  }
+}
