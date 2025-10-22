@@ -1,11 +1,5 @@
 html {
-  min-height: 100%;
-  margin: 0;
-  background-image: url('./assets/backgroud-colored.jpg');
-  height: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: #8dbfa8;
 }
 
 body {
@@ -848,8 +842,6 @@ button {
 
   html {
     font-size: 10px;
-    background-color: #8dbfa8;
-    background-image: none;
   }
 
   .menu {
@@ -926,7 +918,7 @@ button {
 
   .transactions-box {
     margin: 10px 0;
-    padding: 0 2vw 5vw 0vw;
+    padding: 0 2vw 5vw 2vw;
     min-width: 98vw;
     width: 98vw;
   }
@@ -941,6 +933,12 @@ button {
   .transactions-box table {
     border-collapse: collapse;
     min-width: 100px;
+    width: 100%;
+  }
+
+  .transactions-box td {
+    padding: 5px 5px;
+    font-size: 1rem;
   }
 
   .upcoming-section {
