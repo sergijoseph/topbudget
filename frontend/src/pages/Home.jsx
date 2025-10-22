@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import ContentBox from "../components/ui/ContentBox";
 import { isAuthenticated } from "../utils/auth";
@@ -7,7 +8,10 @@ import Logo from '../assets/TopBudget-logo.png'
 export default function Home() {
     const isLoggedIn = isAuthenticated()
     const navigate = useNavigate()
-    if (isLoggedIn) { return navigate('/dashboard', { replace: true }) }
+
+    useEffect(() => {
+        if (isLoggedIn) { navigate('/dashboard'), { replace: true } }
+    }, [])
 
     return (
         <ContentBox boxTitle="Welcome" style="welcome">
@@ -23,9 +27,7 @@ export default function Home() {
                     <li><b>Schedule future transactions</b> - plan ahead for recurring payments, bills, or expected income.</li>
                     <li><b>Track finances by account</b> - manage multiple accounts in one place and see the big picture of your budget at a glance.</li>
                 </ul>
-                <p>Whether you're saving for something big or simply keeping an eye on day-to-day spending,<br/> Top Budget helps you stay on track and in control — one transaction at a time.</p>
-                <br></br>
-                <br></br>
+                <br /><br />
                 <div>
                     <Link className="home-links" to='/signup'>Sign Up</Link>
                     <Link className="home-links" to='/login'>Login</Link>

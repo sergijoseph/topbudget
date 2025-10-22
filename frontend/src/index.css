@@ -37,6 +37,7 @@ body {
 .welcome {
   width: 75%;
   background-color: floralwhite !important;
+  margin-bottom: 20px;
 }
 
 .welcome-page {
@@ -324,6 +325,10 @@ dialog::backdrop {
 
 .change-password a:hover {
   cursor: pointer;
+}
+
+.gettingstarted-box {
+  margin-bottom: 15px;
 }
 
 .gettingstarted-box input {
@@ -881,6 +886,28 @@ button {
   .menu-dropdown {
     margin-top: 12px;
     margin-left: -11px;
+  }
+
+  .welcome-page p {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .welcome-page ul {
+    padding: 0;
+  }
+
+  .welcome-page img {
+    width: 75%;
+  }
+
+  .verification-box {
+    margin: 15px;
+  }
+
+  .gettingstarted-box input {
+    font-size: 1rem;
   }
 
   .dashboard-container {
