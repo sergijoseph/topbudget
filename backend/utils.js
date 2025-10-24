@@ -107,7 +107,7 @@ export async function sendEmail({ toEmail, subject, htmlBody, textBody }) {
       }
     },
     ReplyToAddresses: [],
-    Source: EMAIL_SENDER
+    Source: `Top Budget <${EMAIL_SENDER}>`
   };
 
   try {
