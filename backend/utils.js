@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken'
 import ms from 'ms'
-import nodemailer from 'nodemailer'
+import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
 
 const {
   ACCESS_TOKEN_TTL,
@@ -8,20 +8,19 @@ const {
   JWT_ACCESS_SECRET,
   JWT_REFRESH_SECRET,
   NODE_ENV,
-  EMAIL_SENDER,
-  SMTP_HOST,
-  SMTP_PORT,
-  SMTP_USERNAME,
-  SMTP_PASSWORD
+  AWS_ACCESS_KEY,
+  AWS_SECRET_ACCESS_KEY,
+  AWS_SES_REGION,
+  EMAIL_SENDER
 } = process.env
 const IS_PROD = NODE_ENV === 'production';
 
 export class sqlResponse {
-  constructor(status = false, data = {}, error = '') {
-    this.status = status,
-      this.data = data,
-      this.error = error
-  }
+    constructor(status = false, data = {}, error = '') {
+        this.status = status,
+            this.data = data,
+            this.error = error
+    }
 }
 
 export function logError(error) {
@@ -76,33 +75,49 @@ export function verifyAccessToken(req, res, next) {
   }
 }
 
-// Create a transporter for SMTP
-const transporter = nodemailer.createTransport({
-  host: SMTP_HOST,
-  port: SMTP_PORT,
-  secure: true,
-  auth: {
-    user: SMTP_USERNAME,
-    pass: SMTP_PASSWORD,
-  },
-});
-
-export async function sendEmail(emailDetails) {
-
-  const emailInfo = {
-    from: EMAIL_SENDER,
-    ...emailDetails
+export async function sendEmail({ toEmail, subject, htmlBody, textBody }) {
+  const SES_CONFIG = {
+    credentials: {
+      accessKeyId: AWS_ACCESS_KEY,
+      secretAccessKey: AWS_SECRET_ACCESS_KEY
+    },
+    region: AWS_SES_REGION
   }
 
+  const sesClient = new SESClient(SES_CONFIG)
+
+  const emailParams = {
+    Destination: {
+      ToAddresses: [toEmail]
+    },
+    Message: {
+      Body: {
+        Html: {
+          Charset: "UTF-8",
+          Data: htmlBody
+        },
+        Text: {
+          Charset: "UTF-8",
+          Data: textBody
+        }
+      },
+      Subject: {
+        Charset: "UTF-8",
+        Data: subject
+      }
+    },
+    ReplyToAddresses: [],
+    Source: EMAIL_SENDER
+  };
+
   try {
-    const email = await transporter.sendMail(emailInfo)
+    const sendEmailCommand = new SendEmailCommand(emailParams)
+    await sesClient.send(sendEmailCommand)
 
     return true
 
   } catch (error) {
-    logError(error)
     return false
-
   }
 
 }
