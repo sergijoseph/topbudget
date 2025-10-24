@@ -253,7 +253,8 @@ authRoutes.post('/auth/verification-link', verifyAccessToken, async (req, res) =
         subject: 'Account Verification Link',
         htmlBody:
             `
-        <h1>${APP_NAME}</h1>
+        <div style='padding: 25px; border-radius: 5px; box-shadow: 0 4px 8px 0 #00000033, 0 6px 20px 0 #00000030; font-size: 1rem; background-color: floralwhite; text-align: center;'>
+        <h1><img src='https://topbudget.jabril.dev/TopBudget-logo.png' alt='Top Budget' style='width: 250px;' /></h1>
         <h2>Verify your email address</h2><br/>
         <p>Hi ${userFirstName},</p>
         <p>Welcome to ${APP_NAME}!</p>
@@ -261,6 +262,7 @@ authRoutes.post('/auth/verification-link', verifyAccessToken, async (req, res) =
         <p><a href='${ORIGIN}/verify-account/${verificationCode}' 
         style='padding: 10px; background-color: orange; color: #FFF; border-radius: 5px;'>Click here</a></p>
         <p>If you did not sign up to ${APP_NAME}, please ignore this email or contact us at support@jabril.dev</p>
+        </div>
         `,
         textBody:
             `

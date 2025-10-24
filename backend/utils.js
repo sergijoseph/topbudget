@@ -117,6 +117,7 @@ export async function sendEmail({ toEmail, subject, htmlBody, textBody }) {
     return true
 
   } catch (error) {
+    logError(error)
     return false
   }
 
