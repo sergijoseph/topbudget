@@ -329,11 +329,13 @@ authRoutes.post('/auth/forgot-password', forgotPasswordEmailValidate, async (req
         subject: 'Password Reset Link',
         htmlBody:
             `
-        <h1>${APP_NAME}</h1>
+        <div style='padding: 25px; border-radius: 5px; box-shadow: 0 4px 8px 0 #00000033, 0 6px 20px 0 #00000030; font-size: 1rem; background-color: floralwhite; text-align: center;'>
+        <h1><img src='https://topbudget.jabril.dev/TopBudget-logo.png' alt='Top Budget' style='width: 250px;' /></h1>
         <h2>Forgot your password?</h2><br/>
         <p>Hi ${userFirstName}, we received a request to reset your password on ${APP_NAME}</p>
         <p><a href='${ORIGIN}/reset-password/${PasswordResetCode}'>Click here</a> to reset your password. This link is only valid for one hour.</p>
         <p>If you didn't request a password change, ignore this email.</p>
+        </div>
         `,
         textBody:
             `
