@@ -193,6 +193,18 @@ body {
   background-color: #F5F5F5;
 }
 
+.show-notice {
+  cursor: pointer;
+}
+
+.show-notice:hover {
+  color: orange;
+}
+
+.signup-notice {
+  font-size: 0.8rem;
+}
+
 .input-wrapper {
   position: relative;
   display: inline-block;
