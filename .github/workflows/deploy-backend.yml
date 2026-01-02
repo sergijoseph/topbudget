@@ -47,5 +47,5 @@ jobs:
             rm -rf frontend
             cd ~/apps/
             # Rebuild and restart backend only
-            docker compose build backend
-            docker compose up -d backend
+            docker compose build topbudget-backend
+            docker compose up -d topbudget-backend
