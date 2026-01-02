@@ -1,0 +1,51 @@
+name: Deploy Backend
+
+# Trigger this workflow only on pushes to main branch
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  detect-backend-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      backend_changed: ${{ steps.filter.outputs.backend }}
+    steps:
+      # Step 1: Checkout repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: Detect changes in backend folder
+      - name: Detect backend changes
+        id: filter
+        uses: dorny/paths-filter@v3
+        with:
+          filters: |
+            backend:
+              - 'backend/**'
+
+  deploy-backend:
+    needs: detect-backend-changes
+    if: needs.detect-backend-changes.outputs.backend_changed == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1: Checkout code again for deployment
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: SSH into the server and deploy backend container
+      - name: Deploy backend
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            cd ~/apps/topbudget/
+            git pull origin main
+            rm -rf frontend
+            cd ~/apps/
+            # Rebuild and restart backend only
+            docker compose build backend
+            docker compose up -d backend
