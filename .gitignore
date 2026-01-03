@@ -1,3 +1,7 @@
+#ROOT IGNORE
+.github/workflows
+.gitignore
+
 #FRONTEND IGNORE
 
 # Logs
@@ -14,6 +18,7 @@ frontend/dist
 frontend/dist-ssr
 frontend/*.local
 frontend/.env
+frontend/.gitignore
 
 # Editor directories and files
 frontend/.vscode/*
@@ -30,3 +35,4 @@ frontend/*.sw?
 backend/db/database_schema.sql
 backend/node_modules
 backend/.env
+backend/Dockerfile
