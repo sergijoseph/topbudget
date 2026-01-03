@@ -1,6 +1,5 @@
 #ROOT IGNORE
 .github/workflows
-.gitignore
 
 #FRONTEND IGNORE
 
